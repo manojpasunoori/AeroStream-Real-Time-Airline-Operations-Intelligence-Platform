@@ -1,4 +1,4 @@
-# ✈️ AeroStream — Real-Time Airline Operations Intelligence Platform
+# AeroStream — Real-Time Airline Operations Intelligence Platform
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 🌟 Why AeroStream (Recruiter Snapshot)
+##  Why AeroStream (Recruiter Snapshot)
 
 AeroStream demonstrates **real-world software engineering depth** across system design, backend services, data engineering, frontend visualization, cloud operations, and DevOps automation.
 
@@ -29,7 +29,7 @@ AeroStream demonstrates **real-world software engineering depth** across system 
 
 ---
 
-## 🧭 Table of Contents
+## Table of Contents
 
 1. [Business Problem](#-business-problem)
 2. [Solution Overview](#-solution-overview)
@@ -50,7 +50,7 @@ AeroStream demonstrates **real-world software engineering depth** across system 
 
 ---
 
-## 🧩 Business Problem
+## Business Problem
 
 Airline operations teams require up-to-the-minute visibility into flight movements, delays, and route reliability to optimize turnaround times, gate allocation, disruption management, and customer communication.
 
@@ -58,7 +58,7 @@ Traditional reporting stacks are often **batch-oriented** and fail to provide ac
 
 ---
 
-## 🚀 Solution Overview
+## Solution Overview
 
 AeroStream is a **real-time airline intelligence platform** powered by:
 - **Aviationstack API** as upstream flight feed (requires API key).
@@ -70,7 +70,7 @@ AeroStream is a **real-time airline intelligence platform** powered by:
 
 ---
 
-## 🏗️ High-Level Architecture
+## High-Level Architecture
 
 ```mermaid
 flowchart LR
@@ -93,7 +93,7 @@ flowchart LR
 
 ---
 
-## 🎯 Core Features
+## Core Features
 
 ### 1) Real-time flight ingestion
 - Polls Aviationstack flight endpoint.
@@ -124,7 +124,7 @@ flowchart LR
 
 ---
 
-## 🧰 Technology Stack
+## Technology Stack
 
 | Layer | Tools |
 |---|---|
@@ -140,7 +140,7 @@ flowchart LR
 
 ---
 
-## 📦 Data & Event Contracts
+## Data & Event Contracts
 
 ### Kafka topics
 - `flight_updates` → canonical per-flight updates from ingestion service.
@@ -169,7 +169,7 @@ reliability_score = max(0, 100 - delay_minutes * 1.5)
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```text
 .
@@ -260,7 +260,7 @@ query {
 
 ---
 
-## 🔐 Security Design
+## Security Design
 
 - JWT validation on ingestion and analytics APIs.
 - OAuth2 resource-server style config for Spring service.
@@ -270,7 +270,7 @@ query {
 
 ---
 
-## 📈 Observability
+## Observability
 
 ### Metrics
 - Ingestion service: `/metrics`
@@ -321,7 +321,7 @@ kubectl apply -k infra/k8s/aks
 
 ---
 
-## 🧪 Testing Strategy
+## Testing Strategy
 
 - **Unit tests**
   - Python (`pytest`) for normalization logic.
@@ -339,7 +339,7 @@ mvn -f services/flight-analytics/pom.xml test
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Add schema registry (Avro/Protobuf) for strongly governed event contracts.
 - [ ] Implement dead-letter queue + retry strategy for malformed events.
@@ -350,7 +350,7 @@ mvn -f services/flight-analytics/pom.xml test
 
 ---
 
-## 💼 How to Talk About This Project in Interviews
+## How to Talk About This Project in Interviews
 
 Use this concise pitch:
 
@@ -363,7 +363,7 @@ Use this concise pitch:
 
 ---
 
-## 📚 Additional Documentation
+## Additional Documentation
 
 - `docs/architecture.md`
 - `docs/system-design.md`
@@ -371,7 +371,7 @@ Use this concise pitch:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Create a feature branch.
 2. Commit changes with clear messages.
