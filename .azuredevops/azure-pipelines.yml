@@ -1,0 +1,29 @@
+trigger:
+  branches:
+    include: [main]
+
+stages:
+  - stage: BuildAndTest
+    jobs:
+      - job: Build
+        pool: { vmImage: 'ubuntu-latest' }
+        steps:
+          - checkout: self
+          - script: |
+              pip install -r services/flight-ingestion/requirements.txt
+              pytest services/flight-ingestion/tests
+            displayName: Python tests
+          - script: mvn -f services/flight-analytics/pom.xml test
+            displayName: Java tests
+  - stage: DeployEKS
+    jobs:
+      - job: Deploy
+        steps:
+          - script: kubectl apply -k infra/k8s/eks
+            displayName: Deploy to EKS
+  - stage: DeployAKS
+    jobs:
+      - job: Deploy
+        steps:
+          - script: kubectl apply -k infra/k8s/aks
+            displayName: Deploy to AKS

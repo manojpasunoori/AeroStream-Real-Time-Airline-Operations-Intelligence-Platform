@@ -1,0 +1,18 @@
+{
+  "title": "AeroStream Overview",
+  "schemaVersion": 39,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Ingestion Request Rate",
+      "targets": [{"expr": "sum(rate(http_requests_total[5m]))"}],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+    },
+    {
+      "type": "timeseries",
+      "title": "Analytics JVM Memory",
+      "targets": [{"expr": "jvm_memory_used_bytes"}],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+    }
+  ]
+}

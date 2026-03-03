@@ -1,0 +1,12 @@
+type FlightKpi {
+  id: ID
+  flightNumber: String
+  routeKey: String
+  delayMinutes: Int
+  status: String
+  reliabilityScore: Float
+}
+
+type Query {
+  analyticsByFlight(flightNumber: String!): [FlightKpi]
+}

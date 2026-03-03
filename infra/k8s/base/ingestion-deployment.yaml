@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flight-ingestion
+  namespace: aerostream
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: flight-ingestion }
+  template:
+    metadata:
+      labels: { app: flight-ingestion }
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/example/flight-ingestion:latest
+          ports: [{ containerPort: 8000 }]
+          envFrom:
+            - configMapRef: { name: aerostream-config }
+            - secretRef: { name: aerostream-secrets }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flight-ingestion
+  namespace: aerostream
+spec:
+  selector: { app: flight-ingestion }
+  ports: [{ port: 8000, targetPort: 8000 }]
