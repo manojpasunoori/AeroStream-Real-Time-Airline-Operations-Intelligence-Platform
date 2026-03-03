@@ -1,0 +1,32 @@
+name: Build and Push Images
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions: { contents: read, packages: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./services/flight-ingestion
+          push: true
+          tags: ghcr.io/${{ github.repository }}/flight-ingestion:latest
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./services/flight-analytics
+          push: true
+          tags: ghcr.io/${{ github.repository }}/flight-analytics:latest
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          push: true
+          tags: ghcr.io/${{ github.repository }}/frontend:latest

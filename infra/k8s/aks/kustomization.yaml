@@ -1,0 +1,10 @@
+resources:
+  - ../base/namespace.yaml
+  - ../base/configmap.yaml
+  - ../base/secrets.yaml
+  - ../base/ingestion-deployment.yaml
+  - ../base/analytics-deployment.yaml
+  - ../base/frontend-deployment.yaml
+  - ../base/ingress.yaml
+commonLabels:
+  cloud: azure-aks

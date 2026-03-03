@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flight-analytics
+  namespace: aerostream
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: flight-analytics }
+  template:
+    metadata:
+      labels: { app: flight-analytics }
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/example/flight-analytics:latest
+          ports: [{ containerPort: 8080 }]
+          envFrom:
+            - configMapRef: { name: aerostream-config }
+            - secretRef: { name: aerostream-secrets }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flight-analytics
+  namespace: aerostream
+spec:
+  selector: { app: flight-analytics }
+  ports: [{ port: 8080, targetPort: 8080 }]
